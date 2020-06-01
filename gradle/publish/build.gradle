@@ -31,9 +31,9 @@ publishing {
             artifact testsJar
 
             pom {
-                name = 'web3j'
+                name = 'epirus'
                 description.set(project.provider({ project.description }))
-                url = 'https://web3j.io'
+                url = 'https://epirus.io'
 
                 licenses {
                     license {
@@ -48,9 +48,9 @@ publishing {
                         slug = project.rootProjectOverride
                     }
 
-                    url = "https://github.com/web3j/$slug"
-                    connection = "scm:https://github.com/web3j/${slug}.git"
-                    developerConnection = "scm:git://github.com/web3j/${slug}.git"
+                    url = "https://github.com/epirus-io/$slug"
+                    connection = "scm:https://github.com/epirus-io/${slug}.git"
+                    developerConnection = "scm:git://github.com/epirus-io/${slug}.git"
                 }
 
                 developers {
@@ -58,11 +58,6 @@ publishing {
                         id = 'conor10'
                         name = 'Conor Svensson'
                         email = 'conor10@gmail.com'
-                    }
-                    developer {
-                        id = 'antonydenyer'
-                        name = 'Antony Denyer'
-                        email = 'antony@web3labs.com'
                     }
                 }
 
@@ -84,13 +79,13 @@ nexusPublishing {
 nexusStaging {
     username System.getenv('OSSRH_USERNAME')
     password System.getenv('OSSRH_PASSWORD')
-    packageGroup = "org.web3j"
+    packageGroup = "io.epirus"
 }
 
 
 signing {
     sign publishing.publications.maven
-    def signingKey = new File("$rootDir/web3j.asc")
+    def signingKey = new File("$rootDir/epirus.asc")
     if (signingKey.exists()) {
         useInMemoryPgpKeys(signingKey.getText('UTF-8'), System.getenv('GPG_PASSPHRASE'))
     }
